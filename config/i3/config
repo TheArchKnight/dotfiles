@@ -128,6 +128,7 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # open applications on specific workspaces
+assign [class="Emacs"] $workspace8
 assign [class="MonoDevelop"] $workspace8
 assign [class="libreoffice-impress"] $workspace9 
 assign [class="Atom"] $workspace8
@@ -146,7 +147,7 @@ assign [class="Lutris"] $workspace6
 assign [class="st-256color"] $workspace2
 assign [class="Chromium"] $workspace1
 assign [class="Google-chrome"] $workspace1
-assign [class="Firefox"] $workspace1
+assign [class="firefox"] $workspace1
 assign [class="qutebrowser"] $workspace1
 assign [class="Nautilus"] $workspace3
 assign [class="Pcmanfm"] $workspace3
@@ -307,8 +308,8 @@ hide_edge_borders none
 
 # i3 gaps
 #for_window [class="^.*"] border pixel 2
-gaps inner 5
-gaps outer 5
+gaps inner 8
+gaps outer 8
 #smart_gaps on
 smart_borders on
 
@@ -339,6 +340,7 @@ bindsym $mod+shift+g exec setxkbmap latam
 exec_always --no-startup-id xrandr --output DisplayPort-0 --primary --mode 1920x1200 --pos 0x0 --rotate normal --output DVI-D-0 --mode 1920x1200 --pos 1920x0 --rotate normal --output HDMI-A-0 --off
 
 # autostarted applications
+exec --no-startup-id export LD_LIBRARY_PATH=/usr/local/lib/
 exec --no-startup-id caffeine
 #exec --no-startup-id nm-applet
 #exec --no-startup-id pa-applet

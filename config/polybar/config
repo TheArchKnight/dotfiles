@@ -18,7 +18,8 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #0000
+background =  #2f343f
+;background =  #0000
 background-alt = 0000
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
@@ -28,12 +29,12 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/bar1]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP}
 width = 100%
 height = 27
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 6.0
+radius = 0
 fixed-center = false
 
 background = ${colors.background}
@@ -42,7 +43,7 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 4
+border-size = 0
 border-color = #00000000
 
 padding-left = 0
@@ -58,8 +59,8 @@ font-3 = FontAwesome:pixelsize=10;0
 font-4 = Font Awesome 5 Brands Regular:style=regular
 font-5 = "Font Awesome 5 Brands":pixelsize=10;0
 modules-left = i3
-modules-center = mpd
-modules-right =  xbacklight pulseaudio filesystem memory cpu wlan battery eth temperature date powermenu
+modules-center =
+modules-right =  xbacklight pulseaudio filesystem memory cpu wlan eth battery temperature date 
 
 tray-position = right
 tray-padding = 2

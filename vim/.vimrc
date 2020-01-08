@@ -9,43 +9,42 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'tclem/vim-arduino'
+Plugin 'stevearc/vim-arduino'
+Plugin 'scrooloose/nerdtree'
+Plugin 'benmills/vimux'
+"Plugin 'sigidagi/vim-cmake-project'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+
+"Plugin 'stevearc/vim-arduino'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
+Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'Yggdroot/indentLine'
 " git repos on your local machine (i.e. when working on your own plugin)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
+Plugin 'vim-latex/vim-latex'
 Plugin 'sheerun/vim-polyglot'
-
 Plugin 'joshdick/onedark.vim'
-
 Plugin 'vim-airline/vim-airline'
-
 Plugin 'Valloric/YouCompleteMe'
-
 Plugin 'vim-scripts/Conque-Shell'
-
 Plugin 'majutsushi/tagbar'
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 Plugin 'rakr/vim-one'
 " Snippets are separated from the engine. Add this if you want them:
 "Plugin 'honza/vim-snippets'
-
+Plugin 'https://github.com/xuhdev/vim-latex-live-preview'
 Plugin 'Shougo/unite.vim'
-
 Plugin 'Shougo/vimfiler.vim'
-
 Plugin 'bling/vim-bufferline'
  " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
@@ -88,6 +87,7 @@ set t_AF=^[[38;5;%dm
 
 let g:airline_theme='onedark'
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+    let g:OmniSharp_server_use_mono = 1
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -104,20 +104,52 @@ let g:ycm_semantic_triggers = {
   \   'c' :  [ 're!\w{1}' ],
   \ }
 "let g:ycm_semantic_triggers = { 'c' : [ 're!\w{1}' ] }
-
+let g:OmniSharp_server_stdio = 1
+let g:livepreview_previewer = 'zathura'
+let ayucolor="mirage"
+let g:arduino_dir = '/home/anorak/Arduino'
+let mapleader = ","
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-colorscheme one
+
+colorscheme onehalfdark
+"colorscheme ayu
+
 set background=dark " for the dark version
 set encoding=utf-8
-nmap <F8> :TagbarToggle<CR>
-nmap <F3> :bn <CR>
-nmap <F2> :bp <CR>
-nmap <F4> :bdelete <CR>
-nmap <F5> :VimFiler <CR>
-nmap <F9> :%!astyle <CR>
+
+"nmap <F7> :res +1  <CR>
+"nmap <F6> :res -1 <CR>
+nmap <Leader>+ :res +1  <CR>
+nmap <Leader>- :res -1 <CR>
+"nmap <F8> :TagbarToggle <CR>
+"nmap <F3> :bn <CR>
+"nmap <F2> :bp <CR>
+"nmap <F4> :bdelete <CR>
+nmap <Leader>t :TagbarToggle <CR>
+nmap <Leader>n :bn <CR>
+nmap <Leader>p :bp <CR>
+nmap <Leader>d :bd <CR>
+nmap <Leader>e :NERDTree <CR>
+nmap <Leader>so :set spell! <CR>
+nmap <Leader>ss :set spelllang=es <CR>
+nmap <Leader>se :set spelllang=en <CR>
+"nmap <F9> :%!astyle <CR>
+nmap <Leader>f :%!astyle <CR>
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+
+
 au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
+
+function CompileXeTex()
+    let oldCompileRule=g:Tex_CompileRule_pdf
+    let g:Tex_CompileRule_pdf = 'xelatex -aux-directory=F:/Vim/my_latex_doc/temp --synctex=-1 -src-specials -interaction=nonstopmode $*'
+    call Tex_RunLaTeX()
+    let g:Tex_CompileRule_pdf=oldCompileRule
+endfunction
+map <Leader>lx :<C-U>call CompileXeTex()<CR>
+
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
