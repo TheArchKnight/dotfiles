@@ -1,0 +1,25 @@
+<sources>
+    <homebrew>
+            <default pathversion="1">E:\Homebrew\</default>
+        <source>
+            <name>Emulators</name>
+            <path pathversion="1">E:\Emulators\</path>
+        </source>
+    </programs>
+    <video>
+        <default pathversion="1"></default>
+    </video>
+    <music>
+        <default pathversion="1"></default>
+        <source>
+            <name>Music</name>
+            <path pathversion="1">E:\Music\</path>
+        </source>
+    </music>
+    <pictures>
+        <default pathversion="1"></default>
+    </pictures>
+    <files>
+        <default pathversion="1"></default>
+    </files>
+</sources>

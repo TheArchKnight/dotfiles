@@ -1,7 +1,7 @@
 # dotfiles
-My Arch Linux dotfiles for i3wm, polybar, st and much others
+All of my dotfiles for my systems (Arch Linux, OG Xbox)
 
-Programs/stuff needed:
+Programs/stuff needed (Arch):
 
 I3wm
 Polybar
@@ -11,3 +11,9 @@ Ranger
 Rofi
 Font Awesome
 Ncmpcpp
+
+
+Programs/stuff needed (OG Xbox):
+
+XBMC4XBOX
+
