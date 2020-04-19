@@ -118,21 +118,21 @@ bindsym $mod+shift+g exec setxkbmap latam
 #WORKSPACES
 set $workspace1 "1.Firefox"
 set $workspace2 "2.Terminal"
-set $workspace3 "3.Wine"
+set $workspace3 "3.Msg"
 set $workspace4 "4.Music"
 set $workspace5 "5.Video"
 set $workspace6 "6.Games"
 set $workspace7 "7.Git"
 set $workspace8 "8.Work"
-set $workspace9 "9.Misc"
-set $workspace10 "10.Spotify"
+set $workspace9 "9.Engine"
+set $workspace10 "10.Reading"
 
 assign [class="Blender"] $workspace8
 assign [class="Java"] $workspace8
-assign [class="Godot"] $workspace8
+assign [class="Godot"] $workspace9
 assign [class="main Arduino 1.8.8"] $workspace8
-assign [class="Unity"] $workspace8
-assign [class="Zathura"] $workspace9
+assign [class="Unity"] $workspace9
+assign [class="Zathura"] $workspace10
 assign [class="Lutris"] $workspace6
 assign [class="st-256color"] $workspace2
 assign [class="Google-chrome"] $workspace1
@@ -142,7 +142,7 @@ assign [class="Thunar"] $workspace3
 assign [class="Thunderbird"] $workspace7
 assign [class="Audacious"] $workspace4
 assign [class="Vlc"] $workspace5
-assign [class="discord"] $workspace6
+assign [class="discord"] $workspace3
 assign [class="Totem"] $workspace5
 assign [class="MPlayer"] $workspace5
 assign [class="mpv"] $workspace5
@@ -169,7 +169,7 @@ exec --no-startup-id caffeine
 exec --no-startup-id nitrogen --restore; sleep 1;
 exec --no-startup-id compton --blur-background --blur-background-frame
 exec --no-startup-id xset dpms 600
-exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l"
+#exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l"
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id mpd

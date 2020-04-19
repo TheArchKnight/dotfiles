@@ -140,14 +140,14 @@ wrapping-scroll = false
 
 ws-icon-0 = 1.Firefox;
 ws-icon-1 = 2.Terminal;
-ws-icon-2 = 3.Wine;
+ws-icon-2 = 3.Msg;
 ws-icon-3 = 4.Music;
 ws-icon-4 = 5.Video;
 ws-icon-5 = 6.Games;
-ws-icon-6 = 7.Git;
+ws-icon-6 = 7.Git;
 ws-icon-7 = 8.Work;
-ws-icon-8 = 9.Misc;
-ws-icon-9 = 10.Spotify;
+ws-icon-8 = 9.Engine;
+ws-icon-9 = 10.Reading;
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
