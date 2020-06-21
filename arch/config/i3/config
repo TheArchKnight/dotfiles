@@ -33,7 +33,9 @@ mode "resize" {
 
 #---------------------------------------------------#
 #KEY BINDINGS
-bindsym $mod+Return exec st
+
+bindsym $mod+m exec termite -e "nnn /run/media/anorak/"
+bindsym $mod+Return exec termite
 bindsym $mod+q kill
 bindsym $mod+d exec /home/anorak/.config/rofi/launch.sh 
 bindsym $mod+Tab exec rofi -show window -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font "Droid Sans 16"
@@ -80,8 +82,8 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 # Sreen brightness controls
- bindsym XF86MonBrightnessUp exec light -A 20 # increase screen brightness
- bindsym XF86MonBrightnessDown exec light -U 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 20 # decrease screen brightness
 
 # media player controls
 bindsym XF86AudioPlay exec mpc toggle
@@ -110,7 +112,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+r mode "resize"
 bindsym $mod+Delete exec rofi-computer
-bindsym $mod+shift+x exec betterlockscreen -l blur
+bindsym $mod+shift+x exec betterlockscreen -l
 bindsym $mod+t exec ~/Programas/rofi-tools/rofi-power
 bindsym $mod+shift+g exec setxkbmap latam
 
@@ -135,9 +137,12 @@ assign [class="Unity"] $workspace9
 assign [class="Zathura"] $workspace10
 assign [class="Lutris"] $workspace6
 assign [class="st-256color"] $workspace2
+assign [class="Termite"] $workspace2
 assign [class="Google-chrome"] $workspace1
+assign [class="Brave-browser"] $workspace1
 assign [class="firefox"] $workspace1
 assign [class="Nautilus"] $workspace3
+assign [class="Microsoft Teams - Preview"] $workspace3
 assign [class="Thunar"] $workspace3
 assign [class="Thunderbird"] $workspace7
 assign [class="Audacious"] $workspace4
@@ -148,6 +153,9 @@ assign [class="MPlayer"] $workspace5
 assign [class="mpv"] $workspace5
 assign [class="Steam"] $workspace6
 assign [class="Gimp"] $workspace8
+
+for_window [class="Unity"] floating enable 
+for_window [class="Microsoft Teams - Preview"] floating enable 
 
 #------------------------------------------------------------#
 #WINDOWS
@@ -162,16 +170,17 @@ smart_borders on
 
 #------------------------------------------------------------#
 #START UP
-exec_always --no-startup-id xrandr --output DisplayPort-0 --primary --mode 1920x1200 --pos 0x0 --rotate normal --output DVI-D-0 --mode 1920x1200 --pos 1920x0 --rotate normal --output HDMI-A-0 --off
-
 exec --no-startup-id export LD_LIBRARY_PATH=/usr/local/lib/
 exec --no-startup-id caffeine
 exec --no-startup-id nitrogen --restore; sleep 1;
-exec --no-startup-id compton --blur-background --blur-background-frame
+exec --no-startup-id picom 
 exec --no-startup-id xset dpms 600
 #exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l"
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id mpd
 exec --no-startup-id setxkbmap latam
+exec --no-startup-id udiskie --tray
+exec --no-startup-id mesa_glthread=true
+
 exec_always ~/.config/polybar/launch.sh
