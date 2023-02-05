@@ -1,0 +1,9 @@
+configuration {
+ font: "hack 10";
+ }
+ 
+//@theme "onedark" 
+//@theme "/home/anorak/.config/rofi/themes/onedark.rasi"
+//@theme "/home/anorak/.config/rofi/themes/onedark.rasi"
+//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
