@@ -1,0 +1,184 @@
+set $mod Mod4
+set $f5 133
+font pango:Droid Sans 10
+floating_modifier $mod
+set $sink `pactl list short sinks | grep RUNNING | cut -f1`
+#---------------------------------------------------#
+#COLORS
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color	 #5294e2
+set $black 		 #000000
+# windows         Border    Background    Text     Indicator
+client.focused    #676E7D   #676E7D       #ffffff  #676E7D
+client.unfocused  #2f343f   #2f343f       #ffffff  #676E7D
+#---------------------------------------------------#
+#MODES
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym odiaeresis resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+#---------------------------------------------------#
+#KEY BINDINGS
+
+bindsym $mod+m exec termite -e "lf /run/media/anorak/"
+bindsym $mod+Return exec alacritty
+bindsym $mod+q kill
+bindsym $mod+d exec rofi -show drun -show-icons 
+bindsym $mod+Tab exec rofi -show window -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font "Droid Sans 16"
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+odiaeresis focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# Volume keys
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
+#bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 20 # decrease screen brightness
+
+# media player controls
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioPause exec mpc pause
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+
+# screenshot
+bindsym Print exec scrot $HOME/Pictures/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Mod1+Print exec scrot -u $HOME/Bilder/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Mod1+Shift+Print exec scrot -s $HOME/Bilder/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+r mode "resize"
+bindsym $mod+shift+x exec betterlockscreen -l
+#bindsym $mod+shift+x exec dm-tool switch-to-greeter
+bindsym $mod+t exec ~/Tools/rofi-tools/rofi-power
+bindsym $mod+shift+g exec setxkbmap us
+# Power Profiles menu switcher (rofi)
+bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles.sh
+bindsym $mod+F5 exec "asusctl profile -n"
+#-----------------------------------------------------------#
+#WORKSPACES
+set $workspace1 "1.Firefox"
+set $workspace2 "2.Terminal"
+set $workspace3 "3.Msg"
+set $workspace4 "4.Music"
+set $workspace5 "5.Video"
+set $workspace6 "6.Games"
+set $workspace7 "7.Git"
+set $workspace8 "8.Code"
+set $workspace9 "9.Compile"
+set $workspace10 "10.Reading"
+
+assign [class="Blender"] $workspace8
+assign [class="Java"] $workspace8
+assign [class="main Arduino 1.8.8"] $workspace8
+assign [class="Zathura"] $workspace10
+assign [class="Lutris"] $workspace6
+assign [class="Termite"] $workspace2
+assign [class="Google-chrome"] $workspace1
+assign [class="Brave-browser"] $workspace1
+assign [class="firefox"] $workspace1
+assign [class="Nautilus"] $workspace3
+assign [class="Microsoft Teams - Preview"] $workspace3
+assign [class="Thunar"] $workspace3
+assign [class="Vlc"] $workspace5
+assign [class="discord"] $workspace3
+assign [class="Totem"] $workspace5
+assign [class="MPlayer"] $workspace5
+assign [class="mpv"] $workspace5
+assign [class="Steam"] $workspace6
+assign [class="Gimp"] $workspace8
+assign [class="heroic"] $workspace6
+
+for_window [class="Microsoft Teams - Preview"] floating enable 
+for_window [class="Mathpix Snipping Tool"] floating enable 
+for_window [class="com-sun-tools-javac-launcher-Main"] floating enable
+#------------------------------------------------------------#
+#WINDOWS
+new_window pixel 2
+new_float normal
+hide_edge_borders none
+
+#gaps inner 8
+#gaps outer 8
+#smart_gaps on
+smart_borders on
+
+#------------------------------------------------------------#
+#START UP
+exec --no-startup-id export LD_LIBRARY_PATH=/usr/local/lib/
+exec --no-startup-id nitrogen --restore; sleep 1;
+exec --no-startup-id picom --blur-method dual_kawase
+exec --no-startup-id xset dpms 600
+exec --no-startup-id ~/.config/i3/scripts/lock.sh
+exec --no-startup-id dunst
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id spotifyd
+exec --no-startup-id setxkbmap latam
+exec --no-startup-id udiskie --tray
+exec --no-startup-id pa-applet --disable-notifications
+exec --no-startup-id rog-control-center
+exec --no-startup-id nm-applet
+exec_always ~/.config/polybar/launch.sh
