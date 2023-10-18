@@ -82,8 +82,8 @@ bindsym $mod+0 workspace $workspace10
 #bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # media player controls
 bindsym XF86AudioPlay exec mpc toggle
@@ -151,7 +151,8 @@ assign [class="mpv"] $workspace5
 assign [class="Steam"] $workspace6
 assign [class="Gimp"] $workspace8
 assign [class="heroic"] $workspace6
-
+assign [class="rdesktop"] $workspace8
+for_window [class="rdesktop"] floating enable
 for_window [class="Microsoft Teams - Preview"] floating enable 
 for_window [class="Mathpix Snipping Tool"] floating enable 
 for_window [class="com-sun-tools-javac-launcher-Main"] floating enable
@@ -161,9 +162,9 @@ new_window pixel 2
 new_float normal
 hide_edge_borders none
 
-#gaps inner 8
-#gaps outer 8
-#smart_gaps on
+gaps inner 4
+gaps outer 4
+smart_gaps on
 smart_borders on
 
 #------------------------------------------------------------#
@@ -175,10 +176,10 @@ exec --no-startup-id xset dpms 600
 exec --no-startup-id ~/.config/i3/scripts/lock.sh
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id spotifyd
 exec --no-startup-id setxkbmap latam
 exec --no-startup-id udiskie --tray
 exec --no-startup-id pa-applet --disable-notifications
-exec --no-startup-id rog-control-center
 exec --no-startup-id nm-applet
 exec_always ~/.config/polybar/launch.sh
+exec_always xrandr --output HDMI-1-1 --auto --right-of eDP1
+
