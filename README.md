@@ -1,5 +1,5 @@
 # dotfiles
-All of my dotfiles for my systems (Arch Linux, OG Xbox)
+All of my dotfiles for my systems (Arch Linux based systems)
 
 Programs/stuff needed (Arch):
 
@@ -11,9 +11,3 @@ Ranger
 Rofi
 Font Awesome
 Ncmpcpp
-
-
-Programs/stuff needed (OG Xbox):
-
-XBMC4XBOX
-
