@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/anorak/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?.lua;/home/anorak/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?/init.lua;/home/anorak/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?.lua;/home/anorak/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/anorak/.cache/nvim/packer_hererocks/2.1.1694285958/lib/lua/5.1/?.so"
+local package_path_str = "/home/anorak/.cache/nvim/packer_hererocks/2.1.1753364724/share/lua/5.1/?.lua;/home/anorak/.cache/nvim/packer_hererocks/2.1.1753364724/share/lua/5.1/?/init.lua;/home/anorak/.cache/nvim/packer_hererocks/2.1.1753364724/lib/luarocks/rocks-5.1/?.lua;/home/anorak/.cache/nvim/packer_hererocks/2.1.1753364724/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/anorak/.cache/nvim/packer_hererocks/2.1.1753364724/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -79,20 +79,30 @@ _G.packer_plugins = {
     path = "/home/anorak/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["async.vim"] = {
-    loaded = true,
-    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/async.vim",
-    url = "https://github.com/prabirshrestha/async.vim"
-  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/anorak/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  ["cisco.vim"] = {
+    loaded = true,
+    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/cisco.vim",
+    url = "https://github.com/momota/cisco.vim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/anorak/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
+  ["direnv.vim"] = {
+    loaded = true,
+    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/direnv.vim",
+    url = "https://github.com/direnv/direnv.vim"
   },
   ["emmet-vim"] = {
     loaded = true,
@@ -113,6 +123,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/anorak/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["none-ls.nvim"] = {
+    loaded = true,
+    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/none-ls.nvim",
+    url = "https://github.com/nvimtools/none-ls.nvim"
+  },
+  ["nord.nvim"] = {
+    loaded = true,
+    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/nord.nvim",
+    url = "https://github.com/gbprod/nord.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -139,10 +159,15 @@ _G.packer_plugins = {
     path = "/home/anorak/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
-  ["onedark.nvim"] = {
+  ["odoo-snippets"] = {
     loaded = true,
-    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/onedark.nvim",
-    url = "https://github.com/navarasu/onedark.nvim"
+    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/odoo-snippets",
+    url = "https://github.com/mstuttgart/odoo-snippets"
+  },
+  ["onenord.nvim"] = {
+    loaded = true,
+    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/onenord.nvim",
+    url = "https://github.com/rmehri01/onenord.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -154,26 +179,31 @@ _G.packer_plugins = {
     path = "/home/anorak/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["rest.nvim"] = {
-    config = { "\27LJ\2\n>\0\1\5\0\4\0\0066\1\0\0009\1\1\0019\1\2\0015\3\3\0\18\4\0\0D\1\3\0\1\5\0\0\ttidy\a-i\a-q\6-\vsystem\afn\bvim\3\1\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0005\4\a\0003\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\29custom_dynamic_variables\vresult\15formatters\thtml\0\1\0\1\tjson\ajq\1\0\4\17show_headers\2\19show_http_info\2\22show_curl_command\1\rshow_url\2\14highlight\1\0\2\fenabled\2\ftimeout\3–\1\1\0\a\28result_split_horizontal\1\26result_split_in_place\1\17yank_dry_run\2\15encode_url\2\26skip_ssl_verification\1\renv_file\t.env\20jump_to_request\1\nsetup\14rest-nvim\frequire\0" },
+  ["project.nvim"] = {
+    config = { "\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17project_nvim\frequire\0" },
     loaded = true,
-    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/rest.nvim",
-    url = "https://github.com/rest-nvim/rest.nvim"
+    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/project.nvim",
+    url = "https://github.com/ahmedkhalf/project.nvim"
+  },
+  rainbow_csv = {
+    loaded = true,
+    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/rainbow_csv",
+    url = "https://github.com/mechatroner/rainbow_csv"
   },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/anorak/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["vim-arsync"] = {
+  ["vim-dbml"] = {
     loaded = true,
-    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/vim-arsync",
-    url = "https://github.com/kenn7/vim-arsync"
+    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/vim-dbml",
+    url = "https://github.com/jidn/vim-dbml"
   },
-  ["vim-lobster"] = {
+  ["vim-glsl"] = {
     loaded = true,
-    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/vim-lobster",
-    url = "https://github.com/jcorbin/vim-lobster"
+    path = "/home/anorak/.local/share/nvim/site/pack/packer/start/vim-glsl",
+    url = "https://github.com/tikhomirov/vim-glsl"
   },
   vimwiki = {
     loaded = true,
@@ -183,10 +213,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: rest.nvim
-time([[Config for rest.nvim]], true)
-try_loadstring("\27LJ\2\n>\0\1\5\0\4\0\0066\1\0\0009\1\1\0019\1\2\0015\3\3\0\18\4\0\0D\1\3\0\1\5\0\0\ttidy\a-i\a-q\6-\vsystem\afn\bvim\3\1\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0005\4\a\0003\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\29custom_dynamic_variables\vresult\15formatters\thtml\0\1\0\1\tjson\ajq\1\0\4\17show_headers\2\19show_http_info\2\22show_curl_command\1\rshow_url\2\14highlight\1\0\2\fenabled\2\ftimeout\3–\1\1\0\a\28result_split_horizontal\1\26result_split_in_place\1\17yank_dry_run\2\15encode_url\2\26skip_ssl_verification\1\renv_file\t.env\20jump_to_request\1\nsetup\14rest-nvim\frequire\0", "config", "rest.nvim")
-time([[Config for rest.nvim]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
+time([[Config for project.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

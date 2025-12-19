@@ -55,11 +55,6 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-bindsym $mod+Control+Left move workspace to output left
-bindsym $mod+Control+Right move workspace to output right
-
-
-
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
@@ -88,9 +83,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Sreen brightness controls
-# Brightness control
-bindsym XF86MonBrightnessUp exec brightnessctl set +10%
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl s +5%
+bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
 
 # media player controls
 bindsym XF86AudioPlay exec mpc toggle
@@ -104,7 +98,6 @@ bindsym XF86RFKill exec $HOME/Scripts/airplane-mode.sh
 # screenshot
 bindsym Print exec scrot $HOME/Pictures/`date +%Y-%m-%d_%H:%M:%S`.png
 bindsym $mod+Print exec scrot --select $HOME/Pictures/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 #bindsym $mod+Print exec notify-send "Screenshot keybinding works!"
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -140,7 +133,6 @@ set $workspace8 "8.Code"
 set $workspace9 "9.Compile"
 set $workspace10 "10.Reading"
 
-assign [class="UnrealEditor"] $workspace8
 assign [class="Blender"] $workspace8
 assign [class="Java"] $workspace8
 assign [class="main Arduino 1.8.8"] $workspace8
@@ -149,7 +141,7 @@ assign [class="Lutris"] $workspace6
 assign [class="Termite"] $workspace2
 assign [class="Google-chrome"] $workspace1
 assign [class="Brave-browser"] $workspace1
-assign [class="firefox"] $workspace1
+assign [app_id="firefox"] $workspace1
 assign [class="Nautilus"] $workspace3
 assign [class="Microsoft Teams - Preview"] $workspace7
 assign [class="Thunar"] $workspace3
@@ -164,9 +156,7 @@ assign [class="heroic"] $workspace6
 assign [class="rdesktop"] $workspace8
 assign [class="Spotify"] $workspace4
 assign [class="openboardview"] $workspace8
-assign [class="thunderbird"] $workspace7
 for_window [instance="^steam_app_1182480" title="Origin"] floating enable
-for_window [class="UnrealEditor"] floating enable
 for_window [class="rdesktop"] floating enable
 for_window [class="Microsoft Teams - Preview"] floating enable 
 for_window [class="Mathpix Snipping Tool"] floating enable 
@@ -177,11 +167,11 @@ default_border pixel 2
 default_floating_border normal
 hide_edge_borders none
 # or input <identifier>
-#input "type:keyboard" {
-#    xkb_layout latam
-#}
-gaps inner 0
-gaps outer 0
+input "type:keyboard" {
+    xkb_layout latam
+}
+gaps inner 4
+gaps outer 4
 smart_gaps on
 smart_borders on
 #------------------------------------------------------------#
@@ -194,19 +184,16 @@ exec --no-startup-id ~/.config/i3/scripts/lock.sh
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id udiskie --tray
-exec --no-startup-id thunderbird
 # exec --no-startup-id pa-applet --disable-notifications
 exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-fill ~/Pictures/backgrounds/halo-doom.png
 exec --no-startup-id rog-control-center
 exec --no-startup-id lxsession
 exec --no-startup-id mpd
-# exec --no-startup-id xss-lock -- betterlockscreen -l &
-exec setxkbmap latam
 exec_always ~/.config/polybar/launch.sh
 exec_always autorandr --change 
 exec swaybg -i /mnt/SSD2/DATOS/Pictures/backgrounds/halo-doom.png
-exec_always rclone mount rclone: ~/Netforge/ --vfs-cache-mode full
+
 #bar {
 #  id 0
 #  position bottom
